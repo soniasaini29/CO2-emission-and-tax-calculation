@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Enter the time period</h1>
+</div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <strong>Total tax for any time period paid by the state is 1 million for each metric tonnes of "Electric power CO2 emmission" from coal consumed.</strong>
+</div>
+<form class="needs-validation" (ngSubmit)="onGetResult(f)" #f="ngForm" id="form">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="title">From:</label>
+            <input type="number" id="from" #from="ngModel" class="form-control" name="from" [ngClass]="{'errorDisplay' : (f.submitted && from.invalid ) || !validFrom}" ngModel required>
+            <div *ngIf="(f.submitted && from.invalid)|| !validFrom" class="errorMsg">
+                Please enter a valid year from 1980 to 2018
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="title">To:</label>
+            <input type="number" id="toYear" #toYear="ngModel" class="form-control" name="toYear" [ngClass]="{'errorDisplay' : (f.submitted && toYear.invalid) || !validTo}" ngModel required>
+            <div *ngIf="(f.submitted && toYear.invalid) || !validTo" class="errorMsg">
+                Please enter a valid year from 1980 to 2018
+            </div>
+        </div>
+
+
+        <hr class="mb-4">
+        <div class="col-12" style="text-align: center;">
+            <button class="btn btn-primary btn-position" type="submit">Get Result</button>
+        </div>
+        <h1 id="getResult"></h1>
+    </div>
+</form>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h3>Data from all years:</h3>
+</div>
+
+<div class="table-responsive">
+    <table class="table" id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+            <tr>
+                <th>Series Name</th>
+                <th>Period</th>
+                <th>Frequency</th>
+                <th>Value</th>
+                <th>Units</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of stateData; let i = index">
+                <td>{{states[1][0].name}}</td>
+                <td>{{data[0]}}</td>
+                <td>{{states[1][0].f}}</td>
+                <td>{{data[1]}}</td>
+                <td>{{states[1][0].units}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

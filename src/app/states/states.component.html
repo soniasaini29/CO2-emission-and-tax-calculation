@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">List of all states responsible for CO2 emission </h1>
+</div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <strong>Click on any series name to see a detailed data of that particular state. Also you can calculate the total tax paid
+         by the state for any period in the next step.</strong>
+
+</div>
+<div class="table-responsive">
+    <table class="table" id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+            <tr>
+                <th>Series Name</th>
+                <th>Series ID</th>
+                <th>Units</th>
+                <th class="textAlign">f</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of statesData; let i = index">
+                <td class="pointer" (click)="onEditContact(data.series_id)">{{data.name}}</td>
+                <td>{{data.series_id}}</td>
+                <td>{{data.units}}</td>
+                <td>{{data.f}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

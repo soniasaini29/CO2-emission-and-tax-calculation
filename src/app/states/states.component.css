@@ -1,0 +1,22 @@
+.textAlign i {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+.textAlign {
+    text-align: center;
+}
+
+i.fa-pencil-square-o {
+    color: orange;
+}
+
+.form-outline {
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.pointer {
+    cursor: pointer;
+}
